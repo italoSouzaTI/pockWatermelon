@@ -1,6 +1,17 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true
-  }
+    "extends": "expo/tsconfig.base",
+    "compilerOptions": {
+        "strict": true,
+        "baseUrl": "./",
+        "emitDeclarationOnly": true,
+        "experimentalDecorators": true,
+        "paths": {
+            "@shared/*": ["./src/shared/*"],
+            "@features/*": ["./src/features/*"],
+            "@core/*": ["./src/core/*"],
+            "@routes": ["./src/routes"]
+        },
+        "typeRoots": ["./src/types"],
+        "types": ["...", "@types/jest"]
+    }
 }
