@@ -26,7 +26,7 @@ export function History() {
     }
     function renderItem({ item }: T) {
         return (
-            <View style={{ gap: 8, borderWidth: 1, padding: 8 }}>
+            <View style={{ gap: 8, borderWidth: 1, padding: 8, borderRadius: 4 }}>
                 <Text>{`latitude inicial - ${item.latitude_inicial}`}</Text>
                 <Text>{`longitude inicial - ${item.longitude_inicial}`}</Text>
                 <Text>{`latitude final - ${item.latitude_final}`}</Text>
@@ -60,6 +60,9 @@ export function History() {
                 {` Historico -${params.nome}`}
             </Text>
             <FlatList
+                contentContainerStyle={{
+                    padding: 16,
+                }}
                 data={historico}
                 renderItem={(item) => renderItem(item)}
                 ListEmptyComponent={ListEmptyComponent}

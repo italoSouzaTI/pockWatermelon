@@ -4,15 +4,12 @@ import { FloatButton } from "@shared/components";
 
 import { useHomeModelView } from "./useHomeModelView";
 import { withObservables } from "@nozbe/watermelondb/react";
-export function Home({ navigation }) {
-    const { top, startSend, data, atualizarDados } = useHomeModelView();
+export function Home() {
+    const { top, data, atualizarDados, handleForm, handleHistorico } = useHomeModelView();
     function renderItem({ item }: T) {
         return (
             <View style={HomeStyles.card}>
-                <Text
-                    onPress={() => navigation.navigate("History", { id: item.id, nome: item.nome })}
-                    style={{ fontSize: 20, fontWeight: "bold" }}
-                >
+                <Text onPress={() => handleHistorico(item)} style={{ fontSize: 20, fontWeight: "bold" }}>
                     {item.nome}
                 </Text>
                 <TouchableOpacity
@@ -47,7 +44,7 @@ export function Home({ navigation }) {
                     ListEmptyComponent={ListEmptyComponent}
                 />
             </View>
-            <FloatButton onPress={() => navigation.navigate("Form")} />
+            <FloatButton onPress={handleForm} />
         </View>
     );
 }

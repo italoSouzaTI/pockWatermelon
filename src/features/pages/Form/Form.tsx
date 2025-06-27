@@ -4,18 +4,13 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Input } from "@shared/components/Input/Input";
 import { useFormModelView } from "./useFormModelView";
-export function Form({ navigation }) {
-    const { ValidandoForm, nomeRef, contatoRef, top, errorNome, errorContato } = useFormModelView();
+export function Form() {
+    const { ValidandoForm, nomeRef, contatoRef, top, errorNome, errorContato, handleVolta } = useFormModelView();
     return (
         <View style={[FormStyles.container, { top: Platform.OS == "android" ? top : 0 }]}>
             <View style={FormStyles.row}>
                 <Text style={FormStyles.Title}>Cadastra novo cliente</Text>
-                <TouchableOpacity
-                    style={FormStyles.close}
-                    onPress={() => {
-                        navigation.goBack();
-                    }}
-                >
+                <TouchableOpacity style={FormStyles.close} onPress={handleVolta}>
                     <Ionicons name="close-sharp" size={30} color="black" />
                 </TouchableOpacity>
             </View>

@@ -1,4 +1,5 @@
 import { FormRepository } from "@features/api/repository/form.repository";
+import { Logrepository } from "@features/api/repository/log.repository";
 import { useNavigation } from "@react-navigation/native";
 import { useRef, useState } from "react";
 import { Alert, TextInputProps } from "react-native";
@@ -12,6 +13,17 @@ export function useFormModelView() {
     const [errorContato, setErrorContato] = useState<string>("");
     const { inserirNovoForm } = FormRepository();
     const { top } = useSafeAreaInsets();
+    const { criandoLog } = Logrepository();
+    const handleVolta = async () => {
+        try {
+            await criandoLog({
+                action: "handleVolta",
+                details: { acao: "voltando da tela de formulário", created_at: new Date().getTime() },
+                screen: "form",
+            });
+            navigation.goBack();
+        } catch (error) {}
+    };
     const ValidandoForm = async () => {
         try {
             setErrorContato("");
@@ -33,7 +45,13 @@ export function useFormModelView() {
 
             setErrorContato("");
             setErrorNome("");
-
+            await criandoLog({
+                action: "ValidandoForm",
+                details: {
+                    enviadon: { nome: nomeValue, telefone: String(contatoValue), created_at: new Date().getTime() },
+                },
+                screen: "form",
+            });
             await inserirNovoForm({ nome: nomeValue, telefone: String(contatoValue) });
             navigation.goBack();
         } catch (error) {}
@@ -45,5 +63,6 @@ export function useFormModelView() {
         top,
         errorNome,
         errorContato,
+        handleVolta,
     };
 }

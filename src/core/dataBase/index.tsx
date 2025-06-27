@@ -6,6 +6,7 @@ import schema from "./model/schema";
 import migrations from "./model/migrations";
 import ClienteModel from "./model/clienteModel";
 import localizacaoModel from "./model/localizacaoModel";
+import logModel from "./model/logModel";
 const adapter = new SQLiteAdapter({
     schema,
     migrations,
@@ -20,5 +21,5 @@ const adapter = new SQLiteAdapter({
 // Then, make a Watermelon database from it!
 export const database = new Database({
     adapter,
-    modelClasses: [ClienteModel, localizacaoModel],
+    modelClasses: [ClienteModel, localizacaoModel, logModel],
 });
