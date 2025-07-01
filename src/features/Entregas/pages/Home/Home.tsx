@@ -3,7 +3,6 @@ import { HomeStyles } from "./styles";
 import { FloatButton } from "@shared/components";
 
 import { useHomeModelView } from "./useHomeModelView";
-import { withObservables } from "@nozbe/watermelondb/react";
 export function Home({ navigation }) {
     const { top, startSend, data, atualizarDados } = useHomeModelView();
     function renderItem({ item }: T) {

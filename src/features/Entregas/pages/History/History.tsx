@@ -1,5 +1,5 @@
 import { database } from "@core/dataBase";
-import { nameTable } from "@core/dataBase/nameTable";
+import { nameTable } from "@core/dataBase/Entregas/nameTable";
 import { Q } from "@nozbe/watermelondb";
 import { useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";

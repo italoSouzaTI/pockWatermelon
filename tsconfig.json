@@ -4,6 +4,7 @@
         "strict": true,
         "baseUrl": "./",
         "emitDeclarationOnly": true,
+        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "paths": {
             "@shared/*": ["./src/shared/*"],

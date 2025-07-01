@@ -1,4 +1,4 @@
-import { nameTable } from "@core/dataBase/nameTable";
+import { nameTable } from "@core/dataBase/Entregas/nameTable";
 import { QueryDB } from "@core/dataBase/QueryDB";
 import { Alert } from "react-native";
 

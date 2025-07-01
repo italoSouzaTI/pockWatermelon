@@ -1,5 +1,5 @@
 import { database } from "@core/dataBase";
-import { nameTable } from "@core/dataBase/nameTable";
+import { nameTable } from "@core/dataBase/Entregas/nameTable";
 import { QueryDB } from "@core/dataBase/QueryDB";
 import { Q } from "@nozbe/watermelondb";
 import { Alert } from "react-native";

@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { StackRoute } from "src/routes/StackRoute/StackRoute";
+
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useEffect } from "react";
 import { database } from "@core/dataBase";
+import StackRoute from "src/routes/StackRoute/StackRoute";
 if (__DEV__) {
     require("./ReactotronConfig");
 }

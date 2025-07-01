@@ -1,24 +1,30 @@
 import { Alert, Platform } from "react-native";
-import { Database } from "@nozbe/watermelondb";
+import { appSchema, Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
+import * as ConteudoSync from './ConteudoSync';
+import * as Entregas from './Entregas';
 
-import schema from "./model/schema";
-import migrations from "./model/migrations";
-import ClienteModel from "./model/clienteModel";
-import localizacaoModel from "./model/localizacaoModel";
-const adapter = new SQLiteAdapter({
-    schema,
-    migrations,
-    dbName: "pockWatermelon",
-    jsi: Platform.OS === "ios" ? true : false,
-    onSetUpError: (error) => {
-        Alert.alert("Atenção", "Ocorreu um erro ao inciar dataBase.");
-        // Database failed to load -- offer the user to reload the app or log out
-    },
+const schema = appSchema({
+  version: 1,
+  tables: [
+    ...ConteudoSync.schema,
+    ...Entregas.schema
+  ],
 });
 
-// Then, make a Watermelon database from it!
+const adapter = new SQLiteAdapter({
+  schema,
+  dbName: "pockWatermelon",
+  jsi: Platform.OS === "ios" ? true : false,
+  onSetUpError: (error) => {
+    Alert.alert("Atenção", "Ocorreu um erro ao inciar dataBase.");
+  },
+});
+
 export const database = new Database({
-    adapter,
-    modelClasses: [ClienteModel, localizacaoModel],
+  adapter,
+  modelClasses: [
+    ...ConteudoSync.models,
+    ...Entregas.models
+  ],
 });

@@ -1,5 +1,5 @@
 import { database } from "@core/dataBase";
-import { nameTable } from "@core/dataBase/nameTable";
+import { nameTable } from "@core/dataBase/Entregas/nameTable";
 import { QueryDB } from "@core/dataBase/QueryDB";
 import { useIsFocused } from "@react-navigation/native";
 import { useEffect, useRef, useState } from "react";
@@ -7,8 +7,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
 import { Q } from "@nozbe/watermelondb";
-import { HomeRepository } from "@features/api/repository/home.repository";
-import { syncDB } from "@features/api/repository/sync.repository";
+import { HomeRepository } from "@features/Entregas/repository/home.repository";
+import { syncDB } from "@features/Entregas/repository/sync.repository";
 
 export function useHomeModelView() {
     const { top } = useSafeAreaInsets();
